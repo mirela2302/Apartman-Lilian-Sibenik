@@ -10,8 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/css/flag-icon.min.css">
-    <script src="js/main.js" defer></script>
-</head>
 <body>
     <!-- Top Header -->
     <header class="header-top">
@@ -61,17 +59,16 @@
         <div class="container nav-tabs-container">
             <div class="nav-tabs">
                 <a href="#home" class="tab-link active">Početna</a>
-                <a href="#about" class="tab-link">O nama</a>
-                <a href="#gallery" class="tab-link">Galerija</a>
-                <a href="#explore" class="tab-link">Istražite Šibenik</a>
-                <a href="#contact" class="tab-link">Kontakt</a>
-
+                <a href="o_nama.html" class="tab-link">O nama</a>
+                <a href="galerija.html" class="tab-link">Galerija</a>
+                <a href="aktivniodmor.html" class="tab-link">Istražite Šibenik</a>
+                
                 <button class="tab-link mobile-menu-trigger" id="mobileMenuTrigger" type="button">Menu</button>
                 
             <!-- <a href="#" class="tab-link mobile-menu-trigger" id="mobileMenuTrigger">Menu</a> -->
 
-                <a href="#request" class="tab-link">Request</a>
-                <a href="#booking" class="tab-link">Booking</a>
+                <a href="kontakt.html" class="tab-link">Kontakt</a>
+                <a href="booking.html" class="tab-link">Booking</a>
             </div>
         </div>
     </section>
@@ -181,7 +178,7 @@
             <div class="dual-image-container">
                 <div class="dual-image-card">
                     <div class="dual-image" style="background-image: url('./optimg/bracnasoba.jpg');"></div>
-                    <h3>Moderni Enterijer</h3>
+                    <h3>Udobnost i dizajn</h3>
                     <p>Svježe renovirani apartman s pažljivo odabranim detaljima koji stvaraju ugodnu i modernu atmosferu za vaš odmor.</p>
                     <a href="galerija.html" class="btn">Pogledajte više</a>
                 </div>
@@ -199,43 +196,40 @@
     <!-- Newsletter Section -->
     <section class="newsletter-section" id="request">
         <div class="container">
-            <h2 class="section-title">Pošaljite zahtjev</h2>
-            <p class="section-subtitle">Kontaktirajte nas za više informacija, dostupnost ili specijalne zahtjeve. Odgovorit ćemo vam u najkraćem mogućem roku.</p>
+            <h2 class="section-title">Brzi upit</h2>
+            <p class="section-subtitle">
+                Pošaljite nam upit za dostupnost ili više informacija. 
+                Odgovorimo vam u roku od 24 sata.
+            </p>
             
             <div class="newsletter-form">
-                <form id="requestForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Ime *</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="surname">Prezime *</label>
-                            <input type="text" id="surname" name="surname" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                    </div>
-                    
+                  <form id="quickInquiryForm">
+                <div class="form-row">
                     <div class="form-group">
-                        <label for="message">Poruka</label>
-                        <input type="text" id="message" name="message" placeholder="Vaš upit ili zahtjev...">
+                        <label for="name">Ime *</label>
+                        <input 
+                        type="text" 
+                        id="name" 
+                        name="name" placeholder="Vaše ime" required>
                     </div>
-                    
                     <div class="form-group">
-                        <label for="dates">Željeni datum boravka</label>
-                        <input type="text" id="dates" name="dates" placeholder="DD.MM.YYYY - DD.MM.YYYY">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" placeholder="vaš@email.com" required>
                     </div>
-                    
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="newsletter" name="newsletter">
-                        <label for="newsletter">Želim primati obavijesti o posebnim ponudama i novostima</label>
-                    </div>
-                    
-                    <button type="submit" class="btn" style="width: 100%;">Pošaljite zahtjev</button>
-                </form>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Vaš upit *</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Molimo vas da napišete što vas zanima (dostupnost, cijene, dodatne informacije)..." required></textarea>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                    <label for="newsletter">Želim primati obavijesti o posebnim ponudama i novostima</label>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%;">Pošaljite upit</button>
+            </form>
             </div>
         </div>
     </section>
@@ -259,12 +253,11 @@
                     <h3>Brzi linkovi</h3>
                     <ul class="footer-links">
                         <li><a href="#home">Početna</a></li>
-                        <li><a href="#about">O nama</a></li>
+                        <li><a href="o_nama.html">O nama</a></li>
                         <li><a href="galerija.html">Galerija</a></li>
-                        <li><a href="#explore">Istražite Šibenik</a></li>
+                        <li><a href="aktivniodmor.html">Istražite Šibenik</a></li>
                         <li><a href="kontakt.html">Kontakt</a></li>
-                        <li><a href="#request">Pošaljite zahtjev</a></li>
-                        <li><a href="#booking">Rezervacija</a></li>
+                        <li><a href="booking.html">Rezervacija</a></li>
                     </ul>
                 </div>
                 
@@ -274,7 +267,7 @@
                         <p><i class="fas fa-map-marker-alt"></i> Srijemska 9, 22000 Šibenik, Hrvatska</p>
                         <p><i class="fas fa-phone"></i> +385 99 223 4325</p>
                         <p><i class="fas fa-envelope"></i> info@apartmanlilian.hr</p>
-                        <p><i class="fas fa-clock"></i> Dostupni 24/7 za vaše upite</p>
+                        <p><i class="fas fa-clock"></i> Dostupni 24/7 za Vaše upite</p>
                     </div>
                 </div>
             </div>
@@ -284,7 +277,10 @@
             </div>
         </div>
     </footer>
-
-    
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/main.js" defer></script>
 </body>
 </html>

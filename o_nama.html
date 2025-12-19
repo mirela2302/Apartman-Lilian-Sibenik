@@ -1,11 +1,288 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>O nama</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/css/flag-icon.min.css">
+    <script src="js/main.js" defer></script>
 </head>
 <body>
+    <!-- Top Header -->
+    <header class="header-top">
+        <div class="container">
+            <div class="header-top-left">
+                <span>
+                    <i class="fa fa-location-arrow" style="font-size:24px; color: white;"></i>
+                    <span class="header-text">Šibenik, Srijemska 9</span>
+                </span>
+                <span>
+                    <i class="fa fa-phone" style="font-size:24px; color: white;"></i>
+                    <span class="header-text">+385 99 238 4567</span>
+                </span>
+                <span>
+                    <i class="fa fa-envelope" style="font-size:24px; color: white;"></i>
+                    <span class="header-text">info@apartmanlilian.hr</span>
+                </span>
+            </div>
+            <div class="header-top-right">
+                <ul>
+                    <li class="dropdown">
+                        <a href="#">
+                            <span class="flag-icon flag-icon-hr"></span>
+                            <span class="header-text">Hrvatski</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><span class="flag-icon flag-icon-en"></span>English</a></li>
+                            <li><a href="#"><span class="flag-icon flag-icon-de"></span>Deutsch</a></li>
+                            <li><a href="#"><span class="flag-icon flag-icon-it"></span>Italiano</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
     
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="hero-content">
+            <div class="hero-category"></div>
+            <h1 class="hero-title">Apartman Lilian Šibenik</h1>
+        </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <section class="nav-tabs-section" style="margin-top: -100px;">
+        <div class="container nav-tabs-container">
+            <div class="nav-tabs">
+                <a href="index.html" class="tab-link">Početna</a>
+                <a href="o_nama.html" class="tab-link active">O nama</a>
+                <a href="galerija.html" class="tab-link">Galerija</a>
+                <a href="aktivniodmor.html" class="tab-link">Istražite Šibenik</a>
+               
+
+                <button class="tab-link mobile-menu-trigger" id="mobileMenuTrigger" type="button">Menu</button>
+                
+                <a href="kontakt.html" class="tab-link">Kontakt</a>
+                <a href="booking.html" class="tab-link">Booking</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Intro Section -->
+     <section class="intro-section contact-intro">
+        <div class="container">
+            <div class="intro-container">
+                <div class="intro-content">
+                    <h2>Izvrsna lokacija u srcu povijesnog Šibenika</h2>
+                    <p>
+                        <span class="highlight">Apartman Lilian</span> nalazi se u samom srcu starog grada Šibenika, na adresi Srijemska 9. Naša lokacija je savršena za one koji žele istražiti sve ljepote ovog prekrasnog dalmatinskog grada, a istovremeno uživati u miru i privatnosti našeg potpuno opremljenog apartmana.
+                    </p>
+                    <p>
+                        Smješteni u povijesnoj jezgri grada, samo nekoliko koraka od katedrale Sv. Jakova (UNESCO svjetske baštine) i obale, nudimo vam jedinstveno iskustvo boravka u autentičnoj dalmatinskoj atmosferi. Ulice oko apartmana puni su očaravajućih kamenih fasada, skrivenih dvorišta i tradicionalnih restorana.
+                    </p>
+                    <p>
+                        Prednosti naše lokacije:
+                    </p>
+                    <ul class="location-benefits">
+                        <li><i class="fas fa-check-circle"></i> 10 minute hoda do katedrale Sv. Jakova</li>
+                        <li><i class="fas fa-check-circle"></i> 10 minuta do obale i gradskih plaža</li>
+                        <li><i class="fas fa-check-circle"></i> 10 minuta do tvrđave Sv. Mihovila</li>
+                        <li><i class="fas fa-check-circle"></i> Brojni restorani, kafići i trgovine u neposrednoj blizini</li>
+                        <li><i class="fas fa-check-circle"></i> Laka dostupnost autobusnog i trajektnog kolodvora</li>
+                        <li><i class="fas fa-check-circle"></i> Parking u blizini (javni parking i garaže)</li>
+                    </ul>
+                </div>
+                <div class="intro-image contact-intro-image"></div>
+            </div>
+        </div>
+    </section> 
+     
+
+<!-- main dio-->
+ <!-- O NAMA – GALERIJA I SADRŽAJI -->
+<main class="about-main">
+  <section class="about-intro container">
+    <h2>O apartmanu Lilian</h2>
+    <p>
+      Dobrodošli u autohtonu dalmatinsku kuću mediteranskog stila, izrađenu prije više 
+      desteljeća tehničkom ručnog klesanog kamena.
+    </p>
+    <p>
+      Apartman ima dvije veće spavaće sobe s pogledom na more i balkonom, prostrani dnevni
+      boravak, potpuno opremljenu kuhinju te balkon i vanjski dio kuće idealan za
+      jutarnju kavu ili opuštanje nakon dana provedenog na plaži.
+    </p>
+  </section>
+
+  <!-- GALERIJA SLIKA -->
+  <section class="about-gallery container">
+    <h3>Fotografije apartmana</h3>
+
+    <div class="gallery-grid">
+        <!-- Vanjski dio kuće -->
+      <figure class="gallery-item">
+        <img src="./optimg/apartmentLilianhouseoutside.jpg"
+             alt="Vanjski dio kuće, ulaz u apartman Lilian">
+        <!-- <figcaption>Vanjski dio kuće</figcaption> -->
+      </figure>
+
+
+      <!-- 2. soba -->
+      <figure class="gallery-item">
+        <img src="./optimg/apartmanLiliansoba1.jpg"
+             alt="Druga spavaća soba – jednokreventa soba, balkon s pogledom na more">
+        <!-- <figcaption>Druga spavaća soba</figcaption> -->
+      </figure>
+
+      <!-- Dnevni boravak -->
+      <figure class="gallery-item">
+        <img src="./optimg/sobaizlazbalkonpogled.jpg"
+             alt="Prostrani dnevni boravak s udobnom sofom">
+        <!-- <figcaption>Dnevni boravak</figcaption> -->
+      </figure>
+
+      <!-- Kuhinja -->
+      <figure class="gallery-item">
+        <img src="./optimg/kuhinja-1.jpeg"
+             alt="Potpuno opremljena kuhinja apartmana Lilian">
+        <!-- <figcaption>Kuhinja</figcaption> -->
+      </figure>
+
+      <!-- Balkon -->
+      <figure class="gallery-item">
+        <img src="./optimg/2/apartmentLilianbedromsmall1.webp"
+             alt="Balkon s pogledom na more i staru gradsku jezgru">
+        <!-- <figcaption>Balkon s pogledom na more</figcaption> -->
+      </figure>
+
+       <!--  soba -->
+      <figure class="gallery-item">
+        <img src="./optimg/ap-lilian-view.jpg"
+             alt="Prva spavaća soba – bračni krevet, pogled na more">
+        <!-- <figcaption>Prva spavaća soba</figcaption> -->
+      </figure>
+      
+    </div>
+
+    <!-- Link na veću galeriju (po želji) -->
+    <div class="gallery-link">
+      <a href="galerija.html">Više fotografija u Galeriji</a>
+    </div>
+  </section>
+
+  <!-- BLOK SA SADRŽAJIMA KAO NA BOOKINGU -->
+  <section class="about-details container">
+    <!-- Arranžman za spavanje -->
+    <div class="details-block">
+      <h3>Aranžman za spavanje</h3>
+      <div class="sleeping-arrangement">
+        <div class="sleep-card">
+          <i class="fa-solid fa-bed"></i>
+          <h4>Spavaća soba 1</h4>
+          <p>Bračni krevet, pogled na more</p>
+        </div>
+        <div class="sleep-card">
+          <i class="fa-solid fa-bed"></i>
+          <h4>Spavaća soba 2</h4>
+          <p>Bračni krevet, pristup balkonu</p>
+        </div>
+        <div class="sleep-card">
+          <i class="fa-solid fa-couch"></i>
+          <h4>Dnevni boravak</h4>
+          <p>Udobna sofa za opuštanje</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sadržaji -->
+    <div class="details-columns">
+      <div class="details-block">
+        <h3>Sadržaji</h3>
+        <ul class="details-list">
+          <li><i class="fa-solid fa-location-dot"></i> Apartman u centru grada</li>
+          <li><i class="fa-solid fa-water"></i> Pogled na more</li>
+          <li><i class="fa-solid fa-snowflake"></i> Klima uređaj i grijanje</li>
+          <li><i class="fa-solid fa-wifi"></i> Besplatan Wi‑Fi</li>
+          <li><i class="fa-solid fa-kitchen-set"></i> Potpuno opremljena kuhinja</li>
+          <li><i class="fa-solid fa-tv"></i> TV ravnog ekrana</li>
+          <li><i class="fa-solid fa-square-parking"></i> Parking u blizini</li>
+        </ul>
+      </div>
+
+      <div class="details-block">
+        <h3>Kućni red</h3>
+        <ul class="details-list">
+          <li><i class="fa-solid fa-clock"></i> Prijava: od 14:00</li>
+          <li><i class="fa-solid fa-clock"></i> Odjava: do 10:00</li>
+          <li><i class="fa-solid fa-ban-smoking"></i> Nije dozvoljeno pušenje u zatvorenom prostoru</li>
+          <li><i class="fa-solid fa-paw"></i> Kućni ljubimci po dogovoru</li>
+        </ul>
+      </div>
+
+      <div class="details-block">
+        <h3>Pravila i napomene</h3>
+        <ul class="details-list">
+          <li><i class="fa-solid fa-shield-halved"></i> Sigurnosni depozit po potrebi</li>
+          <li><i class="fa-solid fa-file-contract"></i> Rezervacija potvrđena nakon uplate akontacije</li>
+          <li><i class="fa-solid fa-info-circle"></i> Savršena lokacija za istraživanje i šetnju gradom</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+     <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Apartman Lilian</h3>
+                    <p>Luksuzni apartman u srcu povijesnog Šibenika. Nudimo vam autentično iskustvo dalmatinskog odmora s modernim udobnostima.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Brzi linkovi</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Početna</a></li>
+                        <li><a href="#onama.html">O nama</a></li>
+                        <li><a href="galerija.html">Galerija</a></li>
+                        <li><a href="aktivniodmor.html">Istražite Šibenik</a></li>
+                       
+                        <li><a href="kontakt.html">Kontakt
+                        </a></li>
+                        <li><a href="booking.html">Book now</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Kontaktirajte nas</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Srijemska 9, 22000 Šibenik, Hrvatska</p>
+                        <p><i class="fas fa-phone"></i> +385 99 223 4325</p>
+                        <p><i class="fas fa-envelope"></i> info@apartmanlilian.hr</p>
+                        <p><i class="fas fa-clock"></i> Dostupni 24/7 za vaše upite</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Apartman Lilian Šibenik. Sva prava pridržana.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

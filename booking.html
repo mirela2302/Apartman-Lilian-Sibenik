@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezervacija</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/css/flag-icon.min.css">
+    <style>
+        /* HERO SEKCIJA */
+        .booking-hero h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .booking-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+        
+        /* O APARTMANU SEKCIJA */
+        .apartment-info {
+            padding: 10px 20px;
+            background-color: #f8f9fa;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .info-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .info-card i {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .info-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        /* ŠIBENIK SEKCIJA */
+        .sibenik-section {
+            padding: 60px 20px;
+            /* background: linear-gradient(219deg, #c3a3a3 0%, #ae3b51ed 100%);
+            color: white; */
+        }
+        
+        .sibenik-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            align-items: center;
+            background: linear-gradient(219deg, #c3a3a3 0%, #ae3b51ed 100%);
+            color: white;
+            padding: 25px;
+        }
+        
+        .sibenik-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .attractions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .attraction {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .attraction i {
+            color: #ffd700;
+        }
+        
+        /* RESPONZIVNOST FORME */
+        .booking-form {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        /* FAQ SEKCIJA */
+        .faq-section {
+            padding: 60px 20px;
+           background: linear-gradient(219deg, #c3a3a3 0%, #ae3b51ed 100%);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 200px;
+        }
+        
+        /* RESPONZIVNOST */
+        @media (max-width: 768px) {
+            .booking-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .booking-hero p {
+                font-size: 1rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .attractions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-form {
+                padding: 20px;
+            }
+            
+            .sibenik-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .booking-hero {
+                padding: 60px 20px;
+            }
+            
+            .booking-hero h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* STILIZACIJA FORME */
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+        
+        button[type="submit"] {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            font-weight: 600;
+        }
+        
+        button[type="submit"]:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+.booking-section {
+    padding: 60px 0;
+}
+
+.booking-form {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+button[type="submit"] {
+    background: #6a1d1d;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+    background: #27ae60;
+}
+</style>
+</head>
+<body>
+    <!-- Top Header -->
+    <header class="header-top">
+        <div class="container">
+            <div class="header-top-left">
+                <span>
+                    <i class="fa fa-location-arrow" style="font-size:24px; color: white;"></i>
+                    <span class="header-text">Šibenik, Srijemska 9</span>
+                </span>
+                <span>
+                    <i class="fa fa-phone" style="font-size:24px; color: white;"></i>
+                    <span class="header-text">+385 99 238 4567</span>
+                </span>
+                <span>
+                    <i class="fa fa-envelope" style="font-size:24px; color: white;"></i>
+                    <span class="header-text">info@apartmanlilian.hr</span>
+                </span>
+            </div>
+            <div class="header-top-right">
+                <ul>
+                    <li class="dropdown">
+                        <a href="#">
+                            <span class="flag-icon flag-icon-hr"></span>
+                            <span class="header-text">Hrvatski</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><span class="flag-icon flag-icon-en"></span>English</a></li>
+                            <li><a href="#"><span class="flag-icon flag-icon-de"></span>Deutsch</a></li>                                                                                                                                  
+                            <li><a href="#"><span class="flag-icon flag-icon-it"></span>Italiano</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="hero-content">
+            <div class="hero-category">Rezervacija - Booking                                                                                                                                                                  </div>
+            <h1 class="hero-title">Apartman Lilian Šibenik</h1>
+        </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <section class="nav-tabs-section">
+        <div class="container nav-tabs-container">
+            <div class="nav-tabs">
+                <a href="index.html" class="tab-link">Početna</a>
+                <a href="o_nama.html" class="tab-link ">O nama</a>
+                <a href="galerija.html" class="tab-link">Galerija</a>
+                <a href="aktivniodmor.html" class="tab-link">Istražite Šibenik</a>
+               
+
+                <button class="tab-link mobile-menu-trigger" id="mobileMenuTrigger" type="button">Menu</button>
+                
+                <a href="kontakt.html" class="tab-link">Kontakt</a>
+                <a href="#booking.html" class="tab-link active">Booking</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- HERO SEKCIJA -->
+    <section class="booking-hero">
+        <div class="container">
+            <h1> Rezervirajte sada i osigurajte sebi nezaboravno iskustvo u srcu Dalmacije</h1>
+        </div>
+    </section>
+    
+    <!-- O APARTMANU -->
+    <section class="apartment-info">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px; color: #2c3e50;">Zašto Odabrati Apartman Lilian?</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-home"></i>
+                    <h3>Moderan Komfor</h3>
+                    <p>Potpuno opremljen apartman sa svim modernim pogodnostima za nezaboravan boravak. Klima, WiFi, potpuno opremljena kuhinja i udoban balkon s pogledom.</p>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Izvrsna Lokacija</h3>
+                    <p>Samo 10 minuta hoda od centra Šibenika i 15 minuta od plaže. Blizina svih glavnih atrakcija, restorana i trgovina.</p>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-concierge-bell"></i>
+                    <h3>Dodatne Pogodnosti</h3>
+                    <p>Besplatni parking, dozvoljeni kućni ljubimci, mogućnost najma bicikala, turističke informacije i 24/7 podrška.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ŠIBENIK SEKCIJA -->
+    <section class="sibenik-section">
+        <div class="container">
+            <div class="sibenik-content">
+                <div class="sibenik-text">
+                    <h2>Otkrijte Čaroliju Šibenika</h2>
+                    <p>Šibenik, grad s prekrasnom starom jezgrom i UNESCO-ovom katedralom Sv. Jakova, nudi bogatu kulturnu baštinu i prekrasne plaže. Apartman Lilian je vaša idealna baza za istraživanje Dalmacije.</p>
+                    
+                    <div class="attractions-grid">
+                        <div class="attraction">
+                            <i class="fas fa-church"></i>
+                            <span>Katedrala Sv. Jakova</span>
+                        </div>
+                        <div class="attraction">
+                            <i class="fas fa-water"></i>
+                            <span>Krka National Park</span>
+                        </div>
+                        <div class="attraction">
+                            <i class="fas fa-umbrella-beach"></i>
+                            <span>Plaže Banj & Solaris</span>
+                        </div>
+                        <div class="attraction">
+                            <i class="fas fa-fort-awesome"></i>
+                            <span>Tvrđava Sv. Mihovila</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sibenik-image">
+                    <!-- Možete dodati sliku Šibenika -->
+                    <div style="background: #fff; padding: 20px; border-radius: 10px; text-align: center;">
+                        <i class="fas fa-map-marked-alt" style="font-size: 4rem; color: #667eea; margin-bottom: 15px;"></i>
+                        <h3 style="color: #333;">Idealna Pozicija</h3>
+                        <p style="color: #666;">Centar grada: 10 min<br>Plaža: 15 min<br>Zračna luka: 30 min</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMA ZA REZERVACIJU -->
+    <section class="booking-section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2 style="font-size: 2.9rem;color: #2c3e50;">Rezervacija Apartmana Lilian</h2>
+                <p style="color: #666; max-width: 600px; margin: 0 auto;">Popunite formu ispod i osigurajte svoj boravak. Kontaktirat ćemo vas u najkraćem mogućem roku za potvrdu rezervacije.</p>
+            </div>
+            
+            <form id="bookingForm" class="booking-form">
+                <div class="form-group">
+                    <label>Ime i prezime *</label>
+                    <input type="text" name="full_name" required placeholder="Unesite vaše puno ime">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email adresa *</label>
+                        <input type="email" name="email" required placeholder="vaš@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Broj telefona *</label>
+                        <input type="tel" name="phone" required placeholder="npr. 091 123 4567">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Datum dolaska *</label>
+                        <input type="date" name="check_in" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Datum odlaska *</label>
+                        <input type="date" name="check_out" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Broj osoba *</label>
+                    <select name="guests" required>
+                        <option value="">Odaberite broj osoba</option>
+                        <option value="1">1 osoba</option>
+                        <option value="2">2 osobe</option>
+                        <option value="3">3 osobe</option>
+                        <option value="4">4 osobe</option>
+                        <option value="5+">5+ osoba (kontaktirajte nas)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Dodatne napomene (opcionalno)</label>
+                    <textarea name="message" rows="4" placeholder="Dodatni zahtjevi, pitanja ili napomene..."></textarea>
+                </div>
+                
+                <button type="submit">Pošalji rezervaciju</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- FAQ SEKCIJA -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px; color: #2c3e50;">Često Postavljana Pitanja</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Koji je najraniji check-in i najkasniji check-out?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Check-in je od 14:00, a check-out do 10:00. Po dogovoru moguće je fleksibilno vrijeme.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Je li parking dostupan?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Da, besplatni parking je dostupan za sve goste.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Jesu li dozvoljeni kućni ljubimci?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Da, kućni ljubimci su dozvoljeni uz prethodnu najavu.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Koliko je udaljen apartman od plaže?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Najbliža plaža je udaljena 15 minuta hodanja.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Apartman Lilian</h3>
+                    <p>Luksuzni apartman u srcu povijesnog Šibenika. Nudimo vam autentično iskustvo dalmatinskog odmora s modernim udobnostima.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Brzi linkovi</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Početna</a></li>
+                        <li><a href="onama.html">O nama</a></li>
+                        <li><a href="galerija.html">Galerija</a></li>
+                        <li><a href="aktivniodmor.html">Istražite Šibenik</a></li>
+                       
+                        <li><a href="kontakt.html">Request</a></li>
+                        </a></li>
+                        <li><a href="#booking.html">Book now</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Kontaktirajte nas</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Srijemska 9, 22000 Šibenik, Hrvatska</p>
+                        <p><i class="fas fa-phone"></i> +385 99 223 4325</p>
+                        <p><i class="fas fa-envelope"></i> info@apartmanlilian.hr</p>
+                        <p><i class="fas fa-clock"></i> Dostupni 24/7 za vaše upite</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Apartman Lilian Šibenik. Sva prava pridržana.</p>
+            </div>
+        </div>
+    </footer>
+     <script>
+        // FAQ funkcionalnost
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Postavi min datum na današnji
+        const today = new Date().toISOString().split('T')[0];
+        document.querySelector('input[name="check_in"]').min = today;
+        
+        // Kada se promijeni check_in, postavi min za check_out
+        document.querySelector('input[name="check_in"]').addEventListener('change', function() {
+            document.querySelector('input[name="check_out"]').min = this.value;
+        });
+    </script>
+     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/main.js" defer></script>   
+</body>
+</html>

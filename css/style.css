@@ -51,7 +51,7 @@ h1, h2, h3, h4, h5, h6 {
 .container {
     width: 100%;
     max-width: 1200px;
-    margin: 20px auto;
+    margin: 40px auto;
     padding: 0 20px;
 }
 
@@ -645,17 +645,6 @@ footer {
     color: var(--gold-accent);
 }
 
-.contact-info p {
-    margin-bottom: 15px;
-    display: flex;
-    align-items: flex-start;
-}
-
-.contact-info i {
-    margin-right: 12px;
-    color: var(--gold-light);
-    width: 20px;
-}
 
 .social-links {
     display: flex;
@@ -931,3 +920,283 @@ footer {
         font-size: 0.85rem;
     }
 }
+
+
+/* =====********* CONTACT PAGE SPECIFIC STYLES ===== */
+
+/* FAQ Section - OČUVAJTE OVO U STYLE.CSS */
+.faq-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+    border: 1px solid #f5f2eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 20px;
+    background-color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: rgba(190, 172, 133, 0.05);
+}
+
+.faq-question h3 {
+    font-size: 1.1rem;
+    margin: 0;
+    color: #333333;
+    font-weight: 600;
+}
+
+.faq-toggle {
+    font-size: 1.5rem;
+    color: #beac85;
+    font-weight: 300;
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background-color: rgba(190, 172, 133, 0.02);
+}
+
+.faq-answer p {
+    padding: 20px 0;
+    margin: 0;
+    color: #666666;
+    line-height: 1.7;
+}
+
+/* Responsive Styles for FAQ */
+@media (max-width: 768px) {
+    .faq-question {
+        padding: 15px;
+    }
+    
+    .faq-question h3 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .faq-section {
+        padding: 60px 0;
+    }
+}
+
+
+/* O NAMA – GLAVNI LAYOUT */
+.about-main {
+  padding: 4rem 0 5rem;
+}
+
+.about-intro h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.about-intro p {
+  font-family: "Raleway", sans-serif;
+  line-height: 1.6;
+  margin-bottom: 0.8rem;
+}
+
+/* GALERIJA – 3x2 GRID KAO NA SCREENSHOTU */
+.about-gallery {
+  margin-top: 3rem;
+}
+
+.about-gallery h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-item {
+  background: #f7f7f7;
+  border-radius: 1px;
+  /* overflow: hidden; */
+  /* box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05); */
+}
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: 490px;
+  object-fit: cover;
+}
+
+.gallery-item figcaption {
+  padding: 0.75rem 1rem 1rem;
+  font-size: 0.9rem;
+  font-family: "Raleway", sans-serif;
+}
+
+/* Link ispod galerije */
+.gallery-link {
+  margin-top: 1rem;
+}
+
+.gallery-link a {
+  font-size: 0.9rem;
+  color: #0077b6;
+  text-decoration: none;
+}
+
+.gallery-link a:hover {
+  text-decoration: underline;
+}
+
+/* BLOK SA SADRŽAJIMA */
+.about-details {
+  margin-top: 4rem;
+}
+
+/* Aranžman za spavanje */
+.sleeping-arrangement {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.sleep-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 14px;
+  padding: 1.25rem 1rem;
+  text-align: center;
+}
+
+.sleep-card i {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.sleep-card h4 {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Sadržaji / Kućni red / Pravila – tri stupca */
+.details-columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.details-block h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.details-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+}
+
+.details-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.45rem;
+  font-size: 0.95rem;
+}
+
+.details-list i {
+  margin-top: 0.1rem;
+}
+
+/* RESPONSIVE PRILAGODBE */
+@media (max-width: 992px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sleeping-arrangement {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .details-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .about-main {
+    padding: 3rem 0 4rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-item img {
+    height: 200px;
+  }
+
+  .sleeping-arrangement {
+    grid-template-columns: 1fr;
+  }
+
+  .details-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.notification-success {
+    background-color: #2ecc71;
+    border-left: 5px solid #27ae60;
+}
+
+.notification-error {
+    background-color: #e74c3c;
+    border-left: 5px solid #c0392b;
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.notification-content {
+    flex: 1;
+}
+

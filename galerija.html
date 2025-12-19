@@ -1,11 +1,747 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galerija</title>
-</head>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/css/flag-icon.min.css">
+    <script src="js/main.js" defer></script>
+     <style>
+        /* GLOBAL STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* HERO SEKCIJA */
+        .gallery-hero {
+            /* background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center; */
+            color: rgb(21, 3, 3);
+            text-align: center;
+            padding: 100px 20px;
+            /* margin-bottom: 60px; */
+        }
+        
+        .gallery-hero h1 {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .gallery-hero p {
+            font-size: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            color: #6A1D1D;
+        }
+        
+        /* OPIS APARTMANA */
+        .apartment-description {
+            padding: 60px 20px;
+            background-color: white;
+            margin-bottom: 60px;
+        }
+        
+        .description-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .description-text h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .description-text h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+        
+        .description-text ul {
+            list-style: none;
+            margin: 30px 0;
+        }
+        
+        .description-text li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .description-text li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            margin-top: 30px;
+        }
+        
+        .highlight-box h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .highlight-box h3 i {
+            color: #667eea;
+        }
+        
+        /* GALLERY SECTION */
+        .gallery-section {
+            padding: 60px 20px;
+            background-color: #f8f9fa;
+        }
+        
+        .gallery-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 50px;
+        }
+        
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 300px;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-overlay h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* SPECIFIKACIJE */
+        .specifications {
+            padding: 60px 20px;
+            background-color: white;
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .spec-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            transition: transform 0.3s ease;
+        }
+        
+        .spec-card:hover {
+            transform: translateY(-5px);
+            background: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .spec-card i {
+            font-size: 2.5rem;
+            color: #ef450fbf;
+            margin-bottom: 20px;
+        }
+        
+        .spec-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        /* LOKACIJA */
+        .location-info {
+            padding: 60px 20px;
+            background:  #00000063;
+            color: white;
+        }
+        
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .location-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .distance-list {
+            margin-top: 30px;
+        }
+        
+        .distance-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* MODAL ZA SLIKE */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: #667eea;
+        }
+        
+        /* RESPONZIVNOST */
+        @media (max-width: 992px) {
+            .description-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .location-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-container {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .gallery-hero {
+                padding: 80px 20px;
+            }
+            
+            .description-text h2,
+            .gallery-section h2 {
+                font-size: 2rem;
+            }
+            
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-item {
+                height: 250px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* ANIMACIJE */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        /* CTA BUTTON */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+    </style>
+</head> 
+
 <body>
+
+<!-- Top Header (galerija.html) -->
+<header class="header-top">
+  <div class="container">
+    <div class="header-top-left">
+      <span>
+        <i class="fa fa-location-arrow" style="font-size:24px; color: white;"></i>
+        <span class="header-text">Šibenik, Srijemska 9</span>
+      </span>
+      <span>
+        <i class="fa fa-phone" style="font-size:24px; color: white;"></i>
+        <span class="header-text">+385 99 238 4567</span>
+      </span>
+      <span>
+        <i class="fa fa-envelope" style="font-size:24px; color: white;"></i>
+        <span class="header-text">info@apartmanlilian.hr</span>
+      </span>
+    </div>
+    <div class="header-top-right">
+      <ul>
+        <li class="dropdown">
+          <a href="#">
+            <span class="flag-icon flag-icon-hr"></span>
+            <span class="header-text">Hrvatski</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#"><span class="flag-icon flag-icon-en"></span>English</a></li>
+            <li><a href="#"><span class="flag-icon flag-icon-de"></span>Deutsch</a></li>
+            <li><a href="#"><span class="flag-icon flag-icon-it"></span>Italiano</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!-- Hero sekcija za galeriju -->
+<section class="hero-section" id="gallery-hero">
+  <div class="hero-content">
+    <!-- <div class="hero-category">Fotografije</div> -->
+    <h1 class="hero-title">Galerija apartmana Lilian</h1>
+  </div>
+</section>
+
+<!-- Navigacija za galerija.html -->
+<section class="nav-tabs-section">
+  <div class="container nav-tabs-container">
+    <div class="nav-tabs">
+      <a href="index.html" class="tab-link">Početna</a>
+      <a href="onama.html" class="tab-link">O nama</a>
+      <a href="galerija.html" class="tab-link active">Galerija</a>
+      <a href="aktivniodmor.html" class="tab-link">Istražite Šibenik</a>
+      <a href="kontakt.html" class="tab-link">Kontakt</a>
+
+      <button class="tab-link mobile-menu-trigger" id="mobileMenuTrigger" type="button">Menu</button>
+
+     
+      <a href="booking.html" class="tab-link">Booking</a>
+    </div>
+  </div>
+</section>
+
+ <!-- HERO SEKCIJA -->
+    <section class="gallery-hero"> 
+        <div class="container">
+            <h1>Galerija Apartmana Lilian</h1>
+            <p>Pogledajte prekrasne fotografije našeg apartmana i otkrijte zašto je savršen odabir za vaš odmor u Šibeniku</p>
+        </div>
+    </section>
     
+    <!-- OPIS APARTMANA -->
+    <section class="apartment-description">
+        <div class="container">
+            <div class="description-grid">
+                <div class="description-text fade-in">
+                    <h2>Apartman Lilian</h2>
+                    <p>Apartman Lilian zasigurno će zadovoljiti sve vaše potrebe za savršenim odmorom na prekrasnoj šibenskoj rivijeri.</p>
+                    
+                    <ul>
+                        <li><strong>PRIVATNA TERASA</strong> spojena s prostorijom s prekrasnim pogledom na stari grad i šibenski kanal</li>
+                        <li>Kapacitet do <strong>6 gostiju</strong> - idealno za obitelji ili grupe prijatelja</li>
+                        <li><strong>2 svijetle spavaće sobe</strong> sa vlastitom kupaonicom</li>
+                        <li>Potpuno opremljena kuhinja s blagovaonicom</li>
+                        <li>Moderni sadržaji za neograničeno uživanje</li>
+                    </ul>
+                    
+                    <div class="highlight-box">
+                        <h3><i class="fas fa-star"></i> Uključeno u cijenu:</h3>
+                        <p>Besplatni Wi-Fi, potpuno opremljena kuhinja, roštilj, TV ravnog ekrana, knjižnica i mnogo dodatnih pogodnosti za Vaš savršen boravak.</p>
+                    </div>
+                    
+                    <a href="booking.html" class="cta-button">
+                        <i class="fas fa-calendar-check"></i> Rezerviraj Odmah
+                    </a>
+                </div>
+                
+                <div class="description-image fade-in">
+                    <!-- Ovdje ubacite neku reprezentativnu sliku -->
+                    <div style="background: #f0f0f0; height: 400px; border-radius: 10px; display: flex; justify-content: center; align-items: center; color: #666; font-size: 1.2rem;">
+                        <div style="text-align: center;">
+                            <i class="fas fa-camera" style="font-size: 3rem; margin-bottom: 15px; color: #667eea;"></i>
+                            <p>Fotografija apartmana</p>
+                            <img src="./optimg/tvrdjavaSvMihovila.jpg" alt="Apartman Lilian u centru grada Šibenika pogled na tvrđavu sv. Mihovila" style="max-width: 100%; border-radius: 10px; margin-top: 15px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- GALERIJA -->
+    <section class="gallery-section">
+        <div class="container">
+            <h2 class="fade-in">Fotografije Apartmana</h2>
+            <div class="gallery-container">
+                <!-- SLIKA 1 -->
+                <div class="gallery-item fade-in">
+                    <div style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); height: 100%; display: flex; justify-content: center; align-items: center;">
+                        <div style="text-align: center; padding: 20px;">
+                            
+                            <h3>Spavaća Soba 1</h3>
+                           <img src="./optimg/bracnasoba.jpg" alt="Aptartman Lilian u centru grada Šibenika bračna soba">
+                        </div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3>Glavna Spavaća Soba</h3>
+                        <p>Prostrana soba s bračnim krevetom i direktnim izlazom na terasu</p>
+                    </div>
+                </div>
+                
+                <!-- SLIKA 2 -->
+                <div class="gallery-item fade-in">
+                    <div style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); height: 100%; display: flex; justify-content: center; align-items: center;">
+                        <div style="text-align: center; padding: 20px;">
+                          
+                            <h3>Kuhinja i Blagovaonica</h3>
+                           <img src="./optimg/kuhinja.jpg" alt="Aptartman Lilian u centru grada Šibenika kuhinja">
+                        </div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3>Moderno Opremljena Kuhinja</h3>
+                        <p>Sav suvremeni pribor za pripremu obroka</p>
+                    </div>
+                </div>
+                
+                <!-- SLIKA 3 -->
+                <div class="gallery-item fade-in">
+                    <div style="background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%); height: 100%; display: flex; justify-content: center; align-items: center;">
+                        <div style="text-align: center; padding: 20px;">
+                           
+                            <h3>Kupaonica</h3>
+                            <img src="./optimg/2/tus-kabina-1.jpeg" alt="Aptartman Lilian u centru grada Šibenika kupaonica">
+                        </div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3>Moderni Sanitarni Čvor</h3>
+                        <p>Čisto i funkcionalno s tuš kabinom</p>
+                    </div>
+                </div>
+                
+                <!-- SLIKA 4 -->
+                <div class="gallery-item fade-in">
+                    <div style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); height: 100%; display: flex; justify-content: center; align-items: center;">
+                        <div style="text-align: center; padding: 20px;">
+                            
+                            <h3>Spavaća Soba 2</h3>
+                            <img src="./optimg/2/apartmentLilianbedroomsmall2.webp" alt="Aptartman Lilian u centru grada Šibenika spavaća soba 2">
+                        </div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3>Druga Spavaća Soba</h3>
+                        <p>Dvosobni kreveti - idealno za djecu ili prijatelje</p>
+                    </div>
+                </div>
+                
+                <!-- SLIKA 5 -->
+                <div class="gallery-item fade-in">
+                    <div style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); height: 100%; display: flex; justify-content: center; align-items: center;">
+                        <div style="text-align: center; padding: 20px;">
+                            <h3>Terasa s Pogledom</h3>
+                            <img src="./optimg/sobaizlazbalkonpogled.jpg" alt="Apartman Lilian u centru grada Šibenika terasa s pogledom">
+                        </div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3>Privatna Terasa</h3>
+                        <p>Panoramski pogled na stari grad i more</p>
+                    </div>
+                </div>
+                
+                <!-- SLIKA 6 -->
+                <div class="gallery-item fade-in">
+                    <div style="background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%); height: 100%; display: flex; justify-content: center; align-items: center;">
+                        <div style="text-align: center; padding: 20px;">
+                            
+                            <h3>Dnevni Boravak</h3>
+                            <img src="./optimg/2/apartment Lili loby2.webp" alt="Apartman Lilian u centru grada Šibenika dnevni boravak">
+                        </div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3>Udobni Dnevni Boravak</h3>
+                        <p>Prostor za opuštanje i druženje</p>
+                    </div>
+                </div>
+                
+                <!-- SLIKA 7 -->
+                <div class="gallery-item fade-in">
+                    <div style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); height: 100%; display: flex; justify-content: center; align-items: center;">
+                        <div style="text-align: center; padding: 20px;">
+                            
+                            <h3>Okolica Apartmana</h3>
+                            <img src="./optimg/apartmentLilianhouseoutside.jpg" alt="Apartman Lilian u centru grada Šibenika okolica apartmana">
+                        </div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3>Okolica i Plaža</h3>
+                        <p>Samo 300m do najbliže plaže</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- SPECIFIKACIJE -->
+    <section class="specifications">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 50px;">Pogodnosti Apartmana</h2>
+            <div class="specs-grid">
+                <div class="spec-card fade-in">
+                    <i class="fas fa-wifi"></i>
+                    <h4>Besplatni Wi-Fi</h4>
+                    <p>Brza internet veza u cijelom apartmanu</p>
+                </div>
+                
+                <div class="spec-card fade-in">
+                    <i class="fas fa-thermometer-half"></i>
+                    <h4>Klimatizacija</h4>
+                    <p>Grijanje i hlađenje u svim prostorijama</p>
+                </div>
+                
+                <div class="spec-card fade-in">
+                    <i class="fas fa-parking"></i>
+                    <h4>Besplatni Parking</h4>
+                    <p>Privatno parkirno mjesto uz apartman</p>
+                </div>
+                
+                <div class="spec-card fade-in">
+                    <i class="fas fa-paw"></i>
+                    <h4>Dozvoljeni Ljubimci</h4>
+                    <p>Vaši kućni ljubimci su dobrodošli</p>
+                </div>
+                
+                <div class="spec-card fade-in">
+                    <i class="fas fa-tv"></i>
+                    <h4>Smart TV</h4>
+                    <p>Televizija ravnog ekrana sa streaming servisima</p>
+                </div>
+                
+                <div class="spec-card fade-in">
+                    <i class="fas fa-utensils"></i>
+                    <h4>Potpuna Opremljenost</h4>
+                    <p>Sve što vam treba za samostalno kuhanje</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- LOKACIJA -->
+    <section class="location-info">
+        <div class="container">
+            <div class="location-content">
+                <div class="location-text fade-in">
+                    <h2>Izvrsna Lokacija</h2>
+                    <p>Zahvaljujući središnjoj lokaciji u starom gradu Šibenika, apartman Lilian nudi neusporediv pristup svim glavnim atrakcijama. Lagana šetnja uz rivu vodi vas do UNESCO-ove katedrale sv. Jakova.</p>
+                    
+                    <div class="distance-list">
+                        <div class="distance-item">
+                            <span>Katedrala sv. Jakova</span>
+                            <span>700 metara</span>
+                        </div>
+                        <div class="distance-item">
+                            <span>Najbliža plaža</span>
+                            <span>300 metara</span>
+                        </div>
+                        <div class="distance-item">
+                            <span>Centar grada</span>
+                            <span>5 minuta šetnje</span>
+                        </div>
+                        <div class="distance-item">
+                            <span>Restorani & kafići</span>
+                            <span>2-5 minuta</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="location-map fade-in">
+                    <!-- Ovdje možete dodati Google Maps ili sliku -->
+                    <div style="background: rgba(255,255,255,0.1); height: 300px; border-radius: 10px; display: flex; justify-content: center; align-items: center; border: 2px dashed rgba(255,255,255,0.3);">
+                        <div style="text-align: center; padding: 20px;">
+                            <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                            <h3>Mapa Lokacije</h3>
+                            <p>Ubacite Google Maps ili fotografiju lokacije</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- MODAL ZA SLIKE -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImage" src="" alt="Povećana slika">
+    </div>
+
+<!-- Footer  -->
+<footer id="contact">
+  <div class="container">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Apartman Lilian</h3>
+        <p>
+          Luksuzni apartman u srcu povijesnog Šibenika. Nudimo vam autentično
+          iskustvo dalmatinskog odmora s modernim udobnostima.
+        </p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Brzi linkovi</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Početna</a></li>
+          <li><a href="o_nama.html">O nama</a></li>
+          <li><a href="#galerija.html">Galerija</a></li>
+          <li><a href="aktivniodmor.html">Istražite Šibenik</a></li>
+          
+          <li><a href="kontakt.html">Kontakt</a></li>
+          <li><a href="booking.html">Rezervacija</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Kontaktirajte nas</h3>
+        <div class="contact-info">
+          <p><i class="fas fa-map-marker-alt"></i> Srijemska 9, 22000 Šibenik, Hrvatska</p>
+          <p><i class="fas fa-phone"></i> +385 99 223 4325</p>
+          <p><i class="fas fa-envelope"></i> info@apartmanlilian.hr</p>
+          <p><i class="fas fa-clock"></i> Dostupni 24/7 za vaše upite</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2023 Apartman Lilian Šibenik. Sva prava pridržana.</p>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
